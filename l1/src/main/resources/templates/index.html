@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Lista 1 POO</title>
+
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet">
+
+</head>
+<body>
+	<h1>Cadastro de Clientes</h1>
+	<form method="post">
+		Nome:<input type="text" value=""name="nome"/>
+		Telefone: <input type="tel" value=""name="telefone"/>
+		Data de Nascimento: <input type="date" value=""name="data"/>
+		Gênero: <select name="genero">
+			<option value="M">Masculino</option>
+			<option value="F">Feminino</option>
+		</select>
+		
+		<button type="submit">Salvar</button>
+		
+		</form>
+
+	<script th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
+
+</body>
+</html>
