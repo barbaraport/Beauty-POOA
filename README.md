@@ -1,4 +1,4 @@
-# POO-Spring :coffee::computer:	
+# Beauty-POOA :coffee::computer:	
 1º Projeto de Programação Orientada a Objetos - Prof. Gerson
 
 ## Integrantes da equipe
