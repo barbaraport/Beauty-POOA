@@ -1,44 +1,25 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"></html>
+<html lang="en">
 <head>
-<title>Lista 1 POO | Seja bem-vindo!</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lista 1 POO | Seja bem-vindo!</title>
 
-<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
-<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet">
+	<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+	<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet">
 
 </head>
 <body>
-
-	<div class="container">
-		<h1 class="text-center">Cadastro de Clientes</h1>
-		<form method="POST">
-			<div class="form-group">
-			  <label for="nome">Nome</label>
-			  <input type="text" class="form-control" id="nome" placeholder="Insira o nome">
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="centering text-center">
+				<h1>Seja bem-vindo!</h1>
+				<p>Gerencie seus clientes de forma eficaz e organizada!</p>
+				<button type="button" class="btn btn-success btn-lg" onclick="window.location.href = 'clientes'">Começar</button>
 			</div>
-			<div class="form-group">
-			  <label for="telefone">Telefone</label>
-			  <input type="text" class="form-control" id="telefone" placeholder="Insira o telefone">
-			</div>
-			<div class="form-group">
-			  <label for="data_nascimento">Data de nascimento</label>
-			  <input type="date" class="form-control" id="data_nascimento" placeholder="Insira a data de nascimento">
-			</div>
-			<div class="form-group">
-				<label for="genero">Gênero</label>
-				<select class="form-control" id="genero">
-					<option value="M">Masculino</option>
-					<option value="F">Feminino</option>
-				</select>
-			</div>
-			<button type="submit" class="btn btn-primary">Salvar</button>
-			<button type="reset" class="btn btn-danger">Apagar</button>
-		</form>
+		</div>
 	</div>
-
-	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-
-
 </body>
 </html>
