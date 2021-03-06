@@ -12,12 +12,16 @@
 
 </head>
 <body>
+	<nav class="navbar navbar-default navbar-static-top">
+		<a th:href="@{/}">Home</a>
+		<a th:href="@{/cadastrar-clientes}">Cadastrar</a>
+		<a th:href="@{/listar-clientes}">Listar</a>
+	</nav>
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="centering text-center">
 				<h1>Seja bem-vindo!</h1>
 				<p>Gerencie seus clientes de forma eficaz e organizada!</p>
-				<button type="button" class="btn btn-success btn-lg" onclick="window.location.href = 'clientes'">Começar</button>
 			</div>
 		</div>
 	</div>

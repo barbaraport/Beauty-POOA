@@ -1,15 +1,33 @@
 package org.fatec.l1.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Cliente {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	@Column(nullable = false)
 	private String nome;
+	@Column(nullable = false)
 	private String data_nascimento;
+	@Column(nullable = false)
 	private String genero;
-	public String telefone;
+	@Column(nullable = false)
+	private String ddd;
+	@Column(nullable = false)
+	private String numero;
 	
-	public Cliente(String nome, String data_nascimento, String genero, String telefone) {
-		this.nome = nome;
-		this.data_nascimento = data_nascimento;
-		this.genero = genero;
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -34,6 +52,22 @@ public class Cliente {
 
 	public void setGenero(String genero) {
 		this.genero = genero;
+	}
+
+	public String getDdd() {
+		return ddd;
+	}
+
+	public void setDdd(String ddd) {
+		this.ddd = ddd;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
 	}
 
 	

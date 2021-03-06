@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"></html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lista 1 POO | Listar Clientes</title>
+
+	<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+	<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet">
+
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-static-top">
+		<a th:href="@{/}">Home</a>
+		<a th:href="@{/cadastrar-clientes}">Cadastrar</a>
+		<a th:href="@{/listar-clientes}">Listar</a>
+	</nav>
+	<div class="container">
+		<h1 class="text-center">Lista de Clientes</h1>
+		<table class="table table-hover">
+		  <thead>
+		    <tr>
+		      <th scope="col">ID</th>
+		      <th scope="col">Nome</th>
+		      <th scope="col">Telefone</th>
+		      <th scope="col">Gênero</th>
+		      <th scope="col">Nascimento</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr th:each="cliente:${clientes}">
+		      <th scope="row"><span th:text="${cliente.id}"></span></th>
+		      <td><span th:text="${cliente.nome}"></span></td>
+		      <td><span th:text="${cliente.ddd}"></span> <span th:text="${cliente.numero}"></td>
+		      <td><span th:text="${cliente.genero}"></span></td>
+		      <td><span th:text="${cliente.data_nascimento}"></span></td>
+		    </tr>
+		  </tbody>
+		</table>
+	</div>
+</body>
+</html>
