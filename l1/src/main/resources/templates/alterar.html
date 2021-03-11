@@ -15,32 +15,37 @@
 	</nav>
 	<div class="container">
 	
-		<h1 class="text-center">Cadastro de Clientes</h1>
-		<form method="post" action="/cadastrar-clientes" th:object="${Cliente}">
+		<h1 class="text-center">Alterar Cadastro</h1>
+		<form method="post" action="/alterar" th:object="${cliente}" >
+		<input type="hidden" th.field="${cliente.id}">
+		<div class="form-group">
+			  <label for="id">ID</label>
+			  <input readonly="readonly" class="form-control" id="nome" placeholder="Insira o nome" th:field="${cliente.id}">
+			</div>
 			<div class="form-group">
 			  <label for="nome">Nome</label>
-			  <input type="text" class="form-control" id="nome" placeholder="Insira o nome" name="nome">
+			  <input type="text" class="form-control" id="nome" placeholder="Insira o nome" th:field="${cliente.nome}">
 			</div>
 			<div class="form-group">
 			  <label for="DDD">DDD</label>
-			  <input type="text" class="form-control" id="ddd" placeholder="Insira o DDD" name="ddd">
+			  <input type="text" class="form-control" id="ddd" placeholder="Insira o DDD" th:field="${cliente.ddd}">
 			</div>
 			<div class="form-group">
 			  <label for="numero">Número</label>
-			  <input type="text" class="form-control" id="numero" placeholder="Insira o número" name="numero">
+			  <input type="text" class="form-control" id="numero" placeholder="Insira o número" th:field="${cliente.numero}">
 			</div>
 			<div class="form-group">
 			  <label for="data_nascimento">Data de nascimento</label>
-			  <input type="date" class="form-control" id="data_nascimento" placeholder="Insira a data de nascimento" name="data_nascimento">
+			  <input type="date" class="form-control" id="data_nascimento" placeholder="Insira a data de nascimento" th:field="${cliente.data_nascimento}">
 			</div>
 			<div class="form-group">
 				<label for="genero">Gênero</label>
-				<select class="form-control" id="genero" name="genero">
+				<select class="form-control" id="genero" th:field="${cliente.genero}">
 					<option value="M">Masculino</option>
 					<option value="F">Feminino</option>
 				</select>
 			</div>
-			<button type="submit" class="btn btn-primary">Cadastrar</button>
+			<button type="submit" class="btn btn-primary">Atualizar</button>
 			<button type="reset" class="btn btn-danger">Limpar</button>
 		</form>
 	</div>
