@@ -13,9 +13,11 @@
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-static-top">
-		<a th:href="@{/}">Home</a>
-		<a th:href="@{/cadastrar-clientes}">Cadastrar</a>
-		<a th:href="@{/listar-clientes}">Listar</a>
+		<ul class="nav navbar-nav">
+        	<li><a th:href="@{/}">Home</a></li>
+			<li><a th:href="@{/cadastrar-clientes}">Cadastrar</a></li>
+			<li><a th:href="@{/listar-clientes}">Listar</a></li>
+		</ul>
 	</nav>
 	<div class="container-fluid">
 		<div class="row-fluid">

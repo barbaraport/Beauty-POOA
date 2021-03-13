@@ -1,6 +1,7 @@
 package org.fatec.l1.controller;
 
 import org.fatec.l1.domain.Cliente;
+import org.fatec.l1.domain.Telefone;
 import org.fatec.l1.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,12 +22,11 @@ public class ClientesController {
 	}
 	
 	@PostMapping("/cadastrar-clientes")
-	public String cadastrarClientes(Cliente c) {
+	public String cadastrarClientes(Cliente c, Telefone t) {
+		c.getTelefones().add(t);
 		cr.save(c);
 		return "cadastro";
 	}
-	
-	
 	
     @GetMapping("/alterar/{id}")
     public ModelAndView alterar (@PathVariable("id") Long id) {

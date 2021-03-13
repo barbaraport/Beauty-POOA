@@ -13,12 +13,31 @@
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-static-top">
-		<a th:href="@{/}">Home</a>
-		<a th:href="@{/cadastrar-clientes}">Cadastrar</a>
-		<a th:href="@{/listar-clientes}">Listar</a>
+		<ul class="nav navbar-nav">
+        	<li><a th:href="@{/}">Home</a></li>
+			<li><a th:href="@{/cadastrar-clientes}">Cadastrar</a></li>
+			<li><a th:href="@{/listar-clientes}">Listar</a></li>
+		</ul>
 	</nav>
 	<div class="container">
 		<h1 class="text-center">Lista de Clientes</h1>
+		<form method="post" action="listar-clientes-filtro">
+			<div class="form-group">
+				<label for="ordenar">Ordenar por:</label>
+				<select class="form-control" id="ordem" name="ordem">
+					<option value="p">Padrão</option>
+					<option value="a">Ordem alfabética</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<select class="form-control" id="genero" name="genero">
+					<option value="T">Todos</option>
+					<option value="M">Masculino</option>
+					<option value="F">Feminino</option>
+				</select>
+			</div>
+			<button type="submit" class="btn btn-primary">Filtrar</button>
+		</form>
 		<table class="table table-hover">
 		  <thead>
 		    <tr>
@@ -27,14 +46,14 @@
 		      <th scope="col">Telefone</th>
 		      <th scope="col">Gênero</th>
 		      <th scope="col">Nascimento</th>
-		      <th scope = "col">Ação</th>
+		      <th scope="col">Ações</th>
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <tr th:each="cliente:${clientes}">
+		    <tr th:each="cliente, telefones:${clientes}">
 		      <th scope="row"><span th:text="${cliente.id}"></span></th>
 		      <td><span th:text="${cliente.nome}"></span></td>
-		      <td><span th:text="${cliente.ddd}"></span> <span th:text="${cliente.numero}"></td>
+		      <td><span th:text="${cliente.telefones[0].ddd}"></span> <span th:text="${cliente.telefones[0].numero}"></span></td>
 		      <td><span th:text="${cliente.genero}"></span></td>
 		      <td><span th:text="${cliente.data_nascimento}"></span></td>
 		      <td>

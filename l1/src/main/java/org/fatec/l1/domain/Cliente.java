@@ -1,13 +1,20 @@
 package org.fatec.l1.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Cliente {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -17,10 +24,18 @@ public class Cliente {
 	private String data_nascimento;
 	@Column(nullable = false)
 	private String genero;
-	@Column(nullable = false)
-	private String ddd;
-	@Column(nullable = false)
-	private String numero;
+	
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "idCliente")
+	private Set<Telefone> telefones = new HashSet<Telefone>();
+	
+	public Set<Telefone> getTelefones() {
+		return telefones;
+	}
+
+	public void setTelefones(Set<Telefone> telefones) {
+		this.telefones = telefones;
+	}
 	
 	public long getId() {
 		return id;
@@ -29,8 +44,6 @@ public class Cliente {
 	public void setId(long id) {
 		this.id = id;
 	}
-
-
 
 	public String getNome() {
 		return nome;
@@ -56,21 +69,4 @@ public class Cliente {
 		this.genero = genero;
 	}
 
-	public String getDdd() {
-		return ddd;
-	}
-
-	public void setDdd(String ddd) {
-		this.ddd = ddd;
-	}
-
-	public String getNumero() {
-		return numero;
-	}
-
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
-
-	
 }
