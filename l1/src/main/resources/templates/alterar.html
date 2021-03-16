@@ -18,27 +18,27 @@
 	<div class="container">
 	
 		<h1 class="text-center">Alterar Cadastro</h1>
-		<form method="post" action="/alterar" th:object="${cliente}" >
+		<form method="post" action="/alterar" th:object="${Cliente}">
 		<input type="hidden" th.field="${cliente.id}">
 		<div class="form-group">
 			  <label for="id">ID</label>
-			  <input readonly="readonly" class="form-control" id="nome" placeholder="Insira o nome" th:field="${cliente.id}">
+			  <input readonly="readonly" class="form-control" id="id" name="id" placeholder="Insira o nome" th:field="${cliente.id}">
 			</div>
 			<div class="form-group">
 			  <label for="nome">Nome</label>
-			  <input type="text" class="form-control" id="nome" placeholder="Insira o nome" th:field="${cliente.nome}">
+			  <input type="text" class="form-control" id="nome" name="nome" placeholder="Insira o nome" maxlength="50" th:field="${cliente.nome}">
 			</div>
 			<div class="form-group">
 			  <label for="DDD">DDD</label>
-			  <input type="text" class="form-control" id="ddd" placeholder="Insira o DDD" th:field="${cliente.telefones[0].ddd}">
+			  <input type="text" class="form-control" id="ddd" name="ddd" placeholder="Insira o DDD" maxlength="2" th:field="${cliente.telefones[0].ddd}">
 			</div>
 			<div class="form-group">
 			  <label for="numero">Número</label>
-			  <input type="text" class="form-control" id="numero" placeholder="Insira o número" th:field="${cliente.telefones[0].numero}">
+			  <input type="text" class="form-control" id="numero" name="numero" placeholder="Insira o número" maxlength="9" th:field="${cliente.telefones[0].numero}">
 			</div>
 			<div class="form-group">
 			  <label for="data_nascimento">Data de nascimento</label>
-			  <input type="date" class="form-control" id="data_nascimento" placeholder="Insira a data de nascimento" th:field="${cliente.data_nascimento}">
+			  <input type="date" class="form-control" id="data_nascimento" name="data_nascimento" placeholder="Insira a data de nascimento" th:field="${cliente.data_nascimento}">
 			</div>
 			<div class="form-group">
 				<label for="genero">Gênero</label>

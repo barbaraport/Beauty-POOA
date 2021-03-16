@@ -1,6 +1,8 @@
 package org.fatec.l1.domain;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -27,16 +29,26 @@ public class Cliente {
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "idCliente")
-	private Set<Telefone> telefones = new HashSet<Telefone>();
+	private List<Telefone> telefones = new ArrayList<Telefone>();
 	
-	public Set<Telefone> getTelefones() {
+//	private Set<Telefone> telefones = new HashSet<Telefone>();
+	
+//	public Set<Telefone> getTelefones() {
+//		return telefones;
+//	}
+//
+//	public void setTelefones(Set<Telefone> telefones) {
+//		this.telefones = telefones;
+//	}
+	
+	public List<Telefone> getTelefones() {
 		return telefones;
 	}
 
-	public void setTelefones(Set<Telefone> telefones) {
+	public void setTelefones(List<Telefone> telefones) {
 		this.telefones = telefones;
 	}
-	
+
 	public long getId() {
 		return id;
 	}
