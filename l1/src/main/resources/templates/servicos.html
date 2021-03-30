@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"></html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lista 1 POO | Serviços e Produtos</title>
+
+	<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+	<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet">
+
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-static-top">
+		<ul class="nav navbar-nav">
+        	<li><a th:href="@{/}">Home</a></li>
+			<li><a th:href="@{/cadastrar-clientes}">Cadastrar Clientes</a></li>
+			<li><a th:href="@{/listar-clientes}">Listar Clientes</a></li>
+			<li><a th:href="@{/produtos-e-servicos}">Produtos e Serviços</a></li>
+		</ul>
+	</nav>
+	<div class="container">
+		<h1 class="text-center">Produtos e Serviços</h1>
+		<table class="table table-hover">
+		  <thead>
+		    <tr>
+		      <th scope="col">Nome</th>
+		      <th scope="col">Preço</th>
+		      <th scope="col">Ações</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr th:each="produto:${produtos}">
+		      <td scope="row"><span th:text="${produto.nome}"></span></td>
+		      <td><span th:text="${produto.preco}"></span></td>
+		      <td>
+			      <a class="btn btn-primary" th:href="@{alterar-servico/{id}(id=${produto.id})}">
+			      	<i class="fas fa-edit"></i>Editar
+			      </a>
+			      <a class="btn btn-danger" th:href="@{excluir-servico/{id}(id=${produto.id})}">
+			      	<i class="fas fa-times"></i>Excluir
+			      </a>
+		      </td>
+		    </tr>
+		  </tbody>
+		</table>
+	</div>
+</body>
+</html>

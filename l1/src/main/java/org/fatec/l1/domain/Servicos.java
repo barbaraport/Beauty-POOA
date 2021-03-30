@@ -8,18 +8,13 @@ import javax.persistence.Id;
 
 @Entity
 public class Servicos {
-
-	public Servicos(String nome, float preco) {
-		this.nome = nome;
-		this.preco = preco;
-	}
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Column
+	@Column(nullable = false)
 	private String nome;
-	@Column
+	@Column(nullable = false)
 	private float preco;
 	
 	public long getId() {

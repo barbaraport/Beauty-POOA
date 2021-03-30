@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Lista 1 POO | Alterar Serviço</title>
+
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet">
+
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-static-top">
+		<ul class="nav navbar-nav">
+        	<li><a th:href="@{/}">Home</a></li>
+			<li><a th:href="@{/cadastrar-clientes}">Cadastrar Clientes</a></li>
+			<li><a th:href="@{/listar-clientes}">Listar Clientes</a></li>
+			<li><a th:href="@{/produtos-e-servicos}">Produtos e Serviços</a></li>
+		</ul>
+	</nav>
+	<div class="container">
+		<h1 class="text-center">Alterar Serviço</h1>
+		<form method="post" action="/alterar-servico" th:object="${Servico}">
+		<input type="hidden" th.field="${servico.id}">
+			<div class="form-group">
+			  <label for="nome">Nome</label>
+			  <input type="text" class="form-control" id="nome" name="nome" placeholder="Insira o nome" maxlength="50" th:field="${servico.nome}">
+			</div>
+			<div class="form-group">
+			  <label for="preco">Preço</label>
+			  <input type="text" class="form-control" id="preco" name="preco" placeholder="Insira o preço" th:field="${servico.preco}">
+			</div>
+			<button type="submit" class="btn btn-primary">Atualizar</button>
+		</form>
+	</div>
+	
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+
+</body>
+</html>

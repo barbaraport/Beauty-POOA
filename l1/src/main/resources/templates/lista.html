@@ -15,8 +15,9 @@
 	<nav class="navbar navbar-default navbar-static-top">
 		<ul class="nav navbar-nav">
         	<li><a th:href="@{/}">Home</a></li>
-			<li><a th:href="@{/cadastrar-clientes}">Cadastrar</a></li>
-			<li><a th:href="@{/listar-clientes}">Listar</a></li>
+			<li><a th:href="@{/cadastrar-clientes}">Cadastrar Clientes</a></li>
+			<li><a th:href="@{/listar-clientes}">Listar Clientes</a></li>
+			<li><a th:href="@{/produtos-e-servicos}">Produtos e Serviços</a></li>
 		</ul>
 	</nav>
 	<div class="container">
@@ -57,18 +58,14 @@
 		      <td><span th:text="${cliente.genero}"></span></td>
 		      <td><span th:text="${cliente.data_nascimento}"></span></td>
 		      <td>
-		      
 		      <a class="btn btn-primary" th:href="@{alterar/{id}(id=${cliente.id})}">
-		      
-		      <i class="fas fa-edit"></i>Editar</a>
-		      
+		      	<i class="fas fa-edit"></i>Editar
+		      </a>
 		      <a class="btn btn-danger" th:href="@{excluir/{id}(id=${cliente.id})}">
-		      
-		      <i class="fas fa-times"></i>Excluir</a>
-		      
+		      	<i class="fas fa-times"></i>Excluir
+		      </a>
 		      </td>
-		      
-		      
+
 		    </tr>
 		  </tbody>
 		</table>

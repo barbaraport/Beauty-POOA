@@ -42,7 +42,9 @@ public class L1Application {
 			servicos.put("Tratamento para quedas de cabelo", 89.99F);
 			
 			servicos.forEach ((k, v) -> {
-				Servicos servico = new Servicos(k , v);
+				Servicos servico = new Servicos();
+				servico.setNome(k);
+				servico.setPreco(v);
 				sRepository.save(servico);
 			});
 
