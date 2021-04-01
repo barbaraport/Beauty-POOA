@@ -1,7 +1,6 @@
 package org.fatec.l1;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.fatec.l1.domain.Servicos;

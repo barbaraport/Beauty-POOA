@@ -24,6 +24,7 @@
 		<form method="post" action="/alterar-servico" th:object="${Servico}">
 		<input type="hidden" th.field="${servico.id}">
 			<div class="form-group">
+			  <input type="hidden" class="form-control" id="id" name="id" placeholder="Insira o nome" th:field="${servico.id}">
 			  <label for="nome">Nome</label>
 			  <input type="text" class="form-control" id="nome" name="nome" placeholder="Insira o nome" maxlength="50" th:field="${servico.nome}">
 			</div>

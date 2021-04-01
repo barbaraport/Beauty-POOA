@@ -2,9 +2,7 @@ package org.fatec.l1.controller;
 
 import java.util.List;
 
-import org.fatec.l1.domain.Cliente;
 import org.fatec.l1.domain.Servicos;
-import org.fatec.l1.domain.Telefone;
 import org.fatec.l1.repository.ServicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
