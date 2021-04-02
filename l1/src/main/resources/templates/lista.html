@@ -27,15 +27,21 @@
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h5 class="modal-title">Modal title</h5>
+	        <h5 class="modal-title">Adicionar um novo produto ou serviço consumido</h5>
 	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
 	      <div class="modal-body">
-	        <p>Modal body text goes here.</p>
+	        <p>Selecione na lista abaixo um produto ou serviço que o cliente consumiu.</p>
+	        <form>
+				<select class="form-select" aria-label="Default select example">
+				  <option selected disabled="disabled">Serviços e Produtos</option>
+				  <option th:each="servico:${servicos}" th:value="${servico.id}"><span th:text="${servico.nome}"></span></option>
+				</select>
+	        </form>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary">Save changes</button>
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+	        <button type="button" class="btn btn-primary">Salvar</button>
 	      </div>
 	    </div>
 	  </div>
@@ -85,7 +91,7 @@
 		      	<i class="fas fa-times"></i> Excluir
 		      </a>
 		      <a>
-				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal">
+				<button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modal">
 				  <i class="fas fa-plus"></i> Serviço/Produto
 				</button>
 		      </a>
