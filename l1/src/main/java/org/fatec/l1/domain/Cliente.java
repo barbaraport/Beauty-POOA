@@ -29,6 +29,10 @@ public class Cliente {
 	@JoinColumn(name = "idCliente")
 	private List<Telefone> telefones = new ArrayList<Telefone>();
 	
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "idCliente")
+	private List<Consumido> consumidos = new ArrayList<Consumido>();
+	
 //	private Set<Telefone> telefones = new HashSet<Telefone>();
 	
 //	public Set<Telefone> getTelefones() {
@@ -77,6 +81,14 @@ public class Cliente {
 
 	public void setGenero(String genero) {
 		this.genero = genero;
+	}
+
+	public List<Consumido> getConsumidos() {
+		return consumidos;
+	}
+
+	public void setConsumidos(List<Consumido> consumidos) {
+		this.consumidos = consumidos;
 	}
 
 }
