@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lista 1 POO | Cadastro de Clientes</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container-fluid">
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="nav navbar-nav">
+			        <li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/cadastrar-clientes}">Cadastrar Clientes</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/listar-clientes}">Listar Clientes</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/produtos-e-servicos}">Produtos e Serviços</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+	
+		<h1 class="text-center">Adicionar Produto</h1>
+		<form method="post" action="/adicionar-produto" th:object="${Cliente}" >
+		<input type="hidden" th.field="${cliente.id}">
+		<div class="form-group">
+			  <input type="hidden" class="form-control" id="id" name="id" placeholder="Insira o nome" th:field="${cliente.id}">
+			</div>
+			<div class="form-group">
+			  <input type="hidden" class="form-control" id="nome" name="nome" placeholder="Insira o nome" maxlength="50" th:field="${cliente.nome}">
+			</div>
+			<div class="form-group">
+			  <input type="hidden" class="form-control" id="ddd" name="ddd" placeholder="Insira o DDD" maxlength="2" th:field="${cliente.telefones[0].ddd}">
+			</div>
+			<div class="form-group">
+			  <input type="hidden" class="form-control" id="numero" name="numero" placeholder="Insira o número" maxlength="9" th:field="${cliente.telefones[0].numero}">
+			</div>
+			<div class="form-group">
+			  <input type="hidden" class="form-control" id="data_nascimento" name="data_nascimento" placeholder="Insira a data de nascimento" th:field="${cliente.data_nascimento}">
+			</div>
+			<div class="form-group">
+			<input type="hidden" class="form-control" id="genero" name="genero"  th:field="${cliente.genero}">
+			</div>
+			<select  class="form-control" id="produto" name="produto">
+			<option th:each="consumido:${consumidos}" th:value="${consumido.produto}"><span th:field="${consumido.produto}"></span></option>
+		    </select>
+			<div>
+				<select class="form-control" id="produto" name="produto">
+				  <option selected disabled="disabled">Serviços e Produtos</option>
+				  <option th:each="servico:${servicos}" th:value="${servico.nome}"><span th:text="${servico.nome}"></span></option>
+				</select>
+			</div>
+			<button type="submit" class="btn btn-primary">Adicionar</button>
+		</form>
+	</div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+</body>
+</html>

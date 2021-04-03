@@ -27,21 +27,16 @@
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h5 class="modal-title">Adicionar um novo produto ou serviço consumido</h5>
+	        <h5 class="modal-title">Produtos consumidos</h5>
 	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
 	      <div class="modal-body">
-	        <p>Selecione na lista abaixo um produto ou serviço que o cliente consumiu.</p>
-	        <form>
-				<select class="form-select" aria-label="Default select example">
-				  <option selected disabled="disabled">Serviços e Produtos</option>
-				  <option th:each="servico:${servicos}" th:value="${servico.id}"><span th:text="${servico.nome}"></span></option>
-				</select>
-	        </form>
+	      
+	      <tr th:each="consumido:${consumidos}" th:value="${consumido.id}"><span th:text="${consumido.produto}"></span>
+		    </tr>
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-	        <button type="button" class="btn btn-primary">Salvar</button>
 	      </div>
 	    </div>
 	  </div>
@@ -90,11 +85,15 @@
 		      <a class="btn btn-danger" th:href="@{excluir/{id}(id=${cliente.id})}">
 		      	<i class="fas fa-times"></i> Excluir
 		      </a>
+		      <a class="btn btn-primary" th:href="@{adicionar-produto/{id}(id=${cliente.id})}">
+		      	<i class="fas fa-plus"></i> Serviço/Produto
+		      </a>
 		      <a>
 				<button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modal">
-				  <i class="fas fa-plus"></i> Serviço/Produto
+				  <i class="fas fa-search"></i> 
 				</button>
 		      </a>
+		      
 		      </td>
 
 		    </tr>

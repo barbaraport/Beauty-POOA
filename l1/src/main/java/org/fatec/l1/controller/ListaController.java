@@ -3,8 +3,10 @@ package org.fatec.l1.controller;
 import java.util.List;
 
 import org.fatec.l1.domain.Cliente;
+import org.fatec.l1.domain.Consumido;
 import org.fatec.l1.domain.Servicos;
 import org.fatec.l1.repository.ClienteRepository;
+import org.fatec.l1.repository.ConsumidoRepository;
 import org.fatec.l1.repository.ServicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -23,13 +25,18 @@ public class ListaController {
 	@Autowired
 	private ServicoRepository sr;
 	
+	@Autowired
+	private ConsumidoRepository cp;
+	
 	@GetMapping("/listar-clientes")
 	public ModelAndView listarClientes() {
 		List<Cliente> clientes = cr.findAll();
 		List<Servicos> servicos = sr.findAll();
+		List<Consumido> consumidos = cp.findAll();
 		ModelAndView mv = new ModelAndView("lista");
 		mv.addObject("clientes", clientes);
 		mv.addObject("servicos", servicos);
+		mv.addObject("consumidos", consumidos);
 		return mv;
 	}
 	
