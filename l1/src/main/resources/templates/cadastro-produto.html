@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Lista 1 POO | Alterar Serviço</title>
+<title>Lista 1 POO | Cadastro de Produtos</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
@@ -20,21 +20,21 @@
 		</div>
 	</nav>
 	<div class="container">
-		<h1 class="text-center">Alterar Serviço</h1>
-		<form method="post" action="/alterar-servico" th:object="${Servico}">
-		<input type="hidden" th.field="${servico.id}">
+	
+		<h1 class="text-center">Cadastro de Produtos e Serviços</h1>
+		<form method="post" action="/cadastrar-servicos" th:object="${Servicos}">
 			<div class="form-group">
-			  <input type="hidden" class="form-control" id="id" name="id" placeholder="Insira o nome" th:field="${servico.id}">
 			  <label for="nome">Nome</label>
-			  <input type="text" class="form-control" id="nome" name="nome" placeholder="Insira o nome" maxlength="50" th:field="${servico.nome}">
+			  <input type="text" class="form-control" id="nome" placeholder="Insira o nome. Ex.: Manicure" maxlength="50" name="nome">
 			</div>
 			<div class="form-group">
 			  <label for="preco">Preço</label>
-			  <input type="text" class="form-control" id="preco" name="preco" placeholder="Insira o preço" th:field="${servico.preco}">
+			  <input type="text" class="form-control" id="preco" placeholder="Insira o preço. Ex.: 29.99" name="preco">
 			</div>
-			<button type="submit" class="btn btn-primary">Atualizar</button>
+			<button type="submit" class="btn btn-primary">Cadastrar</button>
+			<button type="reset" class="btn btn-danger">Limpar</button>
 		</form>
 	</div>
-	
+
 </body>
 </html>

@@ -2,7 +2,9 @@ package org.fatec.l1.controller;
 
 import java.util.List;
 
+import org.fatec.l1.domain.Cliente;
 import org.fatec.l1.domain.Servicos;
+import org.fatec.l1.domain.Telefone;
 import org.fatec.l1.repository.ServicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,17 @@ public class ServicosController {
 
 	@Autowired
 	ServicoRepository sr;
+	
+	@GetMapping(value = "/cadastrar-servico")
+	public String adicionarProduto() {
+		return "cadastro-produto";
+	}
+	
+	@PostMapping("/cadastrar-servicos")
+	public String cadastrarServico(Servicos s) {
+		sr.save(s);
+		return "cadastro-produto";
+	}
 	
 	@GetMapping(value = "/produtos-e-servicos")
 	public ModelAndView produtosServicos() {
