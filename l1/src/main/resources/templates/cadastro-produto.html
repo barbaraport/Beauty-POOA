@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Lista 1 POO | Cadastro de Clientes</title>
+<title>Lista 1 POO | Cadastro de Produtos</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
@@ -21,30 +21,15 @@
 	</nav>
 	<div class="container">
 	
-		<h1 class="text-center">Cadastro de Clientes</h1>
-		<form method="post" action="/cadastrar-clientes" th:object="${Cliente}">
+		<h1 class="text-center">Cadastro de Produtos e Serviços</h1>
+		<form method="post" action="/cadastrar-servicos" th:object="${Servicos}">
 			<div class="form-group">
 			  <label for="nome">Nome</label>
-			  <input type="text" class="form-control" id="nome" placeholder="Insira o nome. Ex.: Bárbara dos Santos" maxlength="50" name="nome">
+			  <input type="text" class="form-control" id="nome" placeholder="Insira o nome. Ex.: Manicure" maxlength="50" name="nome">
 			</div>
 			<div class="form-group">
-			  <label for="DDD">DDD</label>
-			  <input type="text" class="form-control" id="ddd" placeholder="Insira o DDD. Ex.: 11" maxlength="2" name="ddd">
-			</div>
-			<div class="form-group">
-			  <label for="numero">Número</label>
-			  <input type="text" class="form-control" id="numero" placeholder="Insira o número. Ex.: 987654321" maxlength="9" name="numero">
-			</div>
-			<div class="form-group">
-			  <label for="data_nascimento">Data de nascimento</label>
-			  <input type="date" class="form-control" id="data_nascimento" placeholder="Insira a data de nascimento" name="data_nascimento">
-			</div>
-			<div class="form-group">
-				<label for="genero">Gênero</label>
-				<select class="form-control" id="genero" name="genero">
-					<option value="M">Masculino</option>
-					<option value="F">Feminino</option>
-				</select>
+			  <label for="preco">Preço</label>
+			  <input type="text" class="form-control" id="preco" placeholder="Insira o preço. Ex.: 29.99" name="preco">
 			</div>
 			<button type="submit" class="btn btn-primary">Cadastrar</button>
 			<button type="reset" class="btn btn-danger">Limpar</button>

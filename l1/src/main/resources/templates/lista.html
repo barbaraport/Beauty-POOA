@@ -6,19 +6,46 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Lista 1 POO | Listar Clientes</title>
-
-	<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
-	<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet">
-
+	
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-static-top">
-		<ul class="nav navbar-nav">
-        	<li><a th:href="@{/}">Home</a></li>
-			<li><a th:href="@{/cadastrar-clientes}">Cadastrar</a></li>
-			<li><a th:href="@{/listar-clientes}">Listar</a></li>
-		</ul>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container-fluid">
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="nav navbar-nav">
+			        <li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/cadastrar-clientes}">Cadastrar Clientes</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/listar-clientes}">Listar Clientes</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/produtos-e-servicos}">Produtos e Serviços</a></li>
+				</ul>
+			</div>
+		</div>
 	</nav>
+	<div class="modal" tabindex="-1" id="modal">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Adicionar um novo produto ou serviço consumido</h5>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	        <p>Selecione na lista abaixo um produto ou serviço que o cliente consumiu.</p>
+	        <form>
+				<select class="form-select" aria-label="Default select example">
+				  <option selected disabled="disabled">Serviços e Produtos</option>
+				  <option th:each="servico:${servicos}" th:value="${servico.id}"><span th:text="${servico.nome}"></span></option>
+				</select>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+	        <button type="button" class="btn btn-primary">Salvar</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 	<div class="container">
 		<h1 class="text-center">Lista de Clientes</h1>
 		<form method="post" action="listar-clientes-filtro">
@@ -55,21 +82,24 @@
 		      <td><span th:text="${cliente.genero}"></span></td>
 		      <td><span th:text="${cliente.data_nascimento}"></span></td>
 		      <td>
-		      
 		      <a class="btn btn-primary" th:href="@{alterar/{id}(id=${cliente.id})}">
-		      
-		      <i class="fas fa-edit"></i>Editar</a>
-		      
+		      	<i class="fas fa-edit"></i> Editar
+		      </a>
 		      <a class="btn btn-danger" th:href="@{excluir/{id}(id=${cliente.id})}">
-		      
-		      <i class="fas fa-times"></i>Excluir</a>
-		      
+		      	<i class="fas fa-times"></i> Excluir
+		      </a>
+		      <a>
+				<button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modal">
+				  <i class="fas fa-plus"></i> Serviço/Produto
+				</button>
+		      </a>
 		      </td>
-		      
-		      
+
 		    </tr>
 		  </tbody>
 		</table>
 	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+	
 </body>
 </html>
