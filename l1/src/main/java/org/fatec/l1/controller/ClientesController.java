@@ -1,8 +1,14 @@
 package org.fatec.l1.controller;
 
+import java.util.List;
+
 import org.fatec.l1.domain.Cliente;
+import org.fatec.l1.domain.Consumido;
+import org.fatec.l1.domain.Servicos;
 import org.fatec.l1.domain.Telefone;
 import org.fatec.l1.repository.ClienteRepository;
+import org.fatec.l1.repository.ConsumidoRepository;
+import org.fatec.l1.repository.ServicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +21,12 @@ public class ClientesController {
 	
 	@Autowired
 	private ClienteRepository cr;
+	
+	@Autowired
+	private ServicoRepository sr;
+	
+	@Autowired
+	private ConsumidoRepository cp;
 	
 	@GetMapping("/cadastrar-clientes")
 	public String cadastrarClientes() {
@@ -43,6 +55,26 @@ public class ClientesController {
     	cr.save(c);
     	mv.setViewName("redirect:/listar-clientes");
 		return mv;
+    }
+    
+    @GetMapping("/adicionar-produto/{id}")
+    public ModelAndView addp (@PathVariable("id") Long id) {
+    	List<Servicos> servicos = sr.findAll();
+    	List<Consumido> consumidos = cp.findAll();
+    	ModelAndView mv = new ModelAndView();
+    	mv.setViewName("adicionar-produto");
+    	Cliente c = cr.getOne(id);
+    	mv.addObject("cliente", c);
+    	mv.addObject("servicos", servicos);
+    	mv.addObject("consumidos", consumidos);
+    	return mv;
+    }
+    
+    @PostMapping("/adicionar-produto")
+    public String adicionarProduto(Cliente c, Telefone t, Consumido p) {
+		c.getConsumidos().add(p);
+		cr.save(c);
+		return "redirect:/listar-clientes";
     }
     
     @GetMapping("/excluir/{id}")
