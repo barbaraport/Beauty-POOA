@@ -71,9 +71,16 @@ public class ClientesController {
     }
     
     @PostMapping("/adicionar-produto")
-    public String adicionarProduto(Cliente c, Telefone t, Consumido p) {
-		c.getConsumidos().add(p);
-		cr.save(c);
+    public String adicionarProduto(Long id, String produto) {
+    	Cliente c = cr.getOne(id);
+    	Consumido p = new Consumido();
+    	p.setProduto(produto);
+    	c.getConsumidos().add(p);
+    	cr.save(c);
+//		c.getConsumidos().add(p);
+//		cr.save(c);
+    	System.out.println(id);
+    	System.out.println(produto);
 		return "redirect:/listar-clientes";
     }
     
