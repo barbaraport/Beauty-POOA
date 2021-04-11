@@ -1,52 +1,68 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"></html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"></html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Lista 1 POO | Listar Clientes</title>
-	
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lista 1 POO | Listar Clientes</title>
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+	integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+	crossorigin="anonymous" />
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container-fluid">
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="nav navbar-nav">
-			        <li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a></li>
-					<li class="nav-item"><a class="nav-link" th:href="@{/cadastrar-clientes}">Cadastrar Clientes</a></li>
-					<li class="nav-item"><a class="nav-link" th:href="@{/listar-clientes}">Listar Clientes</a></li>
-					<li class="nav-item"><a class="nav-link" th:href="@{/produtos-e-servicos}">Produtos e Serviços</a></li>
+			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" th:href="@{/}">Home</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" th:href="@{/#}"
+						id="navbarDropdownMenuLink" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false">Clientes</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<li><a class="dropdown-item"
+								th:href="@{/cadastrar-clientes}">Cadastrar Clientes</a></li>
+							<li><a class="dropdown-item" th:href="@{/listar-clientes}">Listar
+									Clientes</a></li>
+						</ul></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/produtos-e-servicos}">Produtos e Serviços</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 	<div class="modal" tabindex="-1" id="modal">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title">Produtos consumidos</h5>
-	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-	      </div>
-	      <div class="modal-body">
-	      
-	      <tr th:each="consumido:${consumidos}" th:value="${consumido.id}"><span th:text="${consumido.produto}"></span>
-		    </tr>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-	      </div>
-	    </div>
-	  </div>
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Produtos consumidos</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body" id="modal-body"></div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">Fechar</button>
+				</div>
+			</div>
+		</div>
 	</div>
 	<div class="container">
 		<h1 class="text-center">Lista de Clientes</h1>
 		<form method="post" action="listar-clientes-filtro">
 			<div class="form-group">
-				<label for="ordenar">Ordenar por:</label>
-				<select class="form-control" id="ordem" name="ordem">
+				<label for="ordenar">Ordenar por:</label> <select
+					class="form-control" id="ordem" name="ordem">
 					<option value="p">Padrão</option>
 					<option value="a">Ordem alfabética</option>
 				</select>
@@ -61,44 +77,86 @@
 			<button type="submit" class="btn btn-primary">Filtrar</button>
 		</form>
 		<table class="table table-hover">
-		  <thead>
-		    <tr>
-		      <th scope="col">Nome</th>
-		      <th scope="col">Telefone</th>
-		      <th scope="col">Gênero</th>
-		      <th scope="col">Nascimento</th>
-		      <th scope="col">Ações</th>
-		    </tr>
-		  </thead>
-		  <tbody>
-		    <tr th:each="cliente, telefones:${clientes}">
-		      <td><span th:text="${cliente.nome}"></span></td>
-		      <td><span th:text="${cliente.telefones[0].ddd}"></span> <span th:text="${cliente.telefones[0].numero}"></span></td>
-		      <td><span th:text="${cliente.genero}"></span></td>
-		      <td><span th:text="${cliente.data_nascimento}"></span></td>
-		      <td>
-		      <a class="btn btn-primary" th:href="@{alterar/{id}(id=${cliente.id})}">
-		      	<i class="fas fa-edit"></i> Editar
-		      </a>
-		      <a class="btn btn-danger" th:href="@{excluir/{id}(id=${cliente.id})}">
-		      	<i class="fas fa-times"></i> Excluir
-		      </a>
-		      <a class="btn btn-primary" th:href="@{adicionar-produto/{id}(id=${cliente.id})}">
-		      	<i class="fas fa-plus"></i> Serviço/Produto
-		      </a>
-		      <a>
-				<button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modal">
-				  <i class="fas fa-search"></i> 
-				</button>
-		      </a>
-		      
-		      </td>
+			<thead>
+				<tr>
+					<th scope="col">Nome</th>
+					<th scope="col">Telefone</th>
+					<th scope="col">Gênero</th>
+					<th scope="col">Nascimento</th>
+					<th scope="col">Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="cliente, telefones:${clientes}">
+					<td><span th:text="${cliente.nome}"></span></td>
+					<td><span th:text="${cliente.telefones[0].ddd}"></span> <span
+						th:text="${cliente.telefones[0].numero}"></span></td>
+					<td><span th:text="${cliente.genero}"></span></td>
+					<td><span th:text="${cliente.data_nascimento}"></span></td>
+					<td><a class="btn btn-primary"
+						th:href="@{alterar/{id}(id=${cliente.id})}"> <i
+							class="fas fa-edit"></i> Editar
+					</a> <a class="btn btn-danger"
+						th:href="@{excluir/{id}(id=${cliente.id})}"> <i
+							class="fas fa-times"></i> Excluir
+					</a> <a class="btn btn-primary"
+						th:href="@{adicionar-produto/{id}(id=${cliente.id})}"> <i
+							class="fas fa-plus"></i> Serviço/Produto
+					</a> <a>
+							<button th:field="${cliente.id}" type="button"
+								class="btn btn-info click-produto" data-bs-toggle="modal"
+								data-bs-target="#modal">
+								<i class="fas fa-search"></i>
+							</button>
+					</a></td>
 
-		    </tr>
-		  </tbody>
+				</tr>
+			</tbody>
 		</table>
 	</div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-	
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"
+		type="text/javascript"></script>
+	<script>
+		$(document).ready(function() {
+			$(".click-produto").click(function() {
+				var _id = $(this).attr("field");
+				$.get("/modalId/" + _id, function(data, status) {
+
+				}).done(function(dados) {
+					
+					// criando o html dinamicamente pelo js
+					var textoModal = document.getElementById("modal-body"); // pego o modal body, que é onde fica o texto
+					textoModal.innerHTML = ""; // para limpar o possível conteúdo do modal que era de outra pessoa
+					
+					if (!dados.length == 0) { // verificando se a pessoa tem algum produto consumido
+						
+						var consumido = dados.map(function(item,indice){ // percorrendo os produtos consumidos
+							
+							let span = document.createElement("span"); // crio uma tag span
+							span.textContent = item.produto; // o texto dela será o nome do produto
+							let br = document.createElement("br"); // crio um elemento br
+							
+							textoModal.appendChild(span); // dentro do corpo do modal adiciono um span
+							textoModal.appendChild(br); // logo em seguida adiciono um br para quebrar a linha
+							
+						})
+					}
+					else { // caso a pessoa não tenha consumido nada
+						let span = document.createElement("span");
+						span.textContent = "O cliente ainda não consumiu nenhum produto ou serviço.";
+						textoModal.appendChild(span);
+					}
+					
+				})
+			})
+		})
+	</script>
+
 </body>
 </html>
