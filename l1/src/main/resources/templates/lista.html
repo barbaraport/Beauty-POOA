@@ -49,9 +49,7 @@
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
 				</div>
-				<div class="modal-body">
-					<span type="text"  id="fproduto" > </span> <br>
-				</div>
+				<div class="modal-body" id="modal-body"></div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">Fechar</button>
@@ -130,13 +128,31 @@
 				var _id = $(this).attr("field");
 				$.get("/modalId/" + _id, function(data, status) {
 
-				}).done(function(a) {
-					var dados = a;
-					var consumido = dados.map(function(item,indice){
-						return item.produto;
-					})
-					$("#fproduto").text(consumido);
-					console.log(consumido);
+				}).done(function(dados) {
+					
+					// criando o html dinamicamente pelo js
+					var textoModal = document.getElementById("modal-body"); // pego o modal body, que é onde fica o texto
+					textoModal.innerHTML = ""; // para limpar o possível conteúdo do modal que era de outra pessoa
+					
+					if (!dados.length == 0) { // verificando se a pessoa tem algum produto consumido
+						
+						var consumido = dados.map(function(item,indice){ // percorrendo os produtos consumidos
+							
+							let span = document.createElement("span"); // crio uma tag span
+							span.textContent = item.produto; // o texto dela será o nome do produto
+							let br = document.createElement("br"); // crio um elemento br
+							
+							textoModal.appendChild(span); // dentro do corpo do modal adiciono um span
+							textoModal.appendChild(br); // logo em seguida adiciono um br para quebrar a linha
+							
+						})
+					}
+					else { // caso a pessoa não tenha consumido nada
+						let span = document.createElement("span");
+						span.textContent = "O cliente ainda não consumiu nenhum produto ou serviço.";
+						textoModal.appendChild(span);
+					}
+					
 				})
 			})
 		})
