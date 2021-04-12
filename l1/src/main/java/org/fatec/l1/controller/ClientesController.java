@@ -50,7 +50,7 @@ public class ClientesController {
     }
     
     @PostMapping("/alterar")
-    public ModelAndView alterar(Cliente c, Telefone t) {
+    public ModelAndView alterar(Cliente c, Telefone T) {
     	ModelAndView mv = new ModelAndView();
     	cr.save(c);
     	mv.setViewName("redirect:/listar-clientes");
