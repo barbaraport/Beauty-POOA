@@ -37,6 +37,8 @@
 						</ul></li>
 					<li class="nav-item"><a class="nav-link"
 						th:href="@{/produtos-e-servicos}">Produtos e Serviços</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/relatorios}">Relatórios</a></li>
 				</ul>
 			</div>
 		</div>
@@ -44,13 +46,13 @@
 	<div class="container">
 
 		<h1 class="text-center">Adicionar Produto</h1>
-		<form method="post" action="/adicionar-produto" >
+		<form method="post" action="/adicionar-produto">
 			<input type="hidden" th:field="${cliente.id}">
-<!-- 			<select class="form-control" id="produto" name="produto"> -->
-<!-- 				<option th:each="consumido:${consumidos}" -->
-<!-- 					th:value="${consumido.produto}"><span -->
-<!-- 						th:field="${consumido.produto}"></span></option> -->
-<!-- 			</select> -->
+			<!-- 			<select class="form-control" id="produto" name="produto"> -->
+			<!-- 				<option th:each="consumido:${consumidos}" -->
+			<!-- 					th:value="${consumido.produto}"><span -->
+			<!-- 						th:field="${consumido.produto}"></span></option> -->
+			<!-- 			</select> -->
 			<div>
 				<select class="form-control" id="produto" name="produto">
 					<option selected disabled="disabled">Serviços e Produtos</option>
