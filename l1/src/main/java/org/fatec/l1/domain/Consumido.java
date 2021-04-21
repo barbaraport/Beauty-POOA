@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Consumido {
@@ -14,6 +15,17 @@ public class Consumido {
 	private long id;
 	@Column
 	private String produto;
+	
+//	@ManyToOne
+//	private Cliente cliente;
+
+//	public Cliente getId_Cliente() {
+//		return cliente;
+//	}
+//
+//	public void setId_Cliente(Cliente cliente) {
+//		this.cliente = cliente;
+//	}
 
 	public long getId() {
 		return id;
