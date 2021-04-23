@@ -1,5 +1,8 @@
 package org.fatec.l1.domain;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,16 +35,6 @@ public class Cliente {
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "idCliente")
 	private List<Consumido> consumidos = new ArrayList<Consumido>();
-	
-//	private Set<Telefone> telefones = new HashSet<Telefone>();
-	
-//	public Set<Telefone> getTelefones() {
-//		return telefones;
-//	}
-//
-//	public void setTelefones(Set<Telefone> telefones) {
-//		this.telefones = telefones;
-//	}
 	
 	public List<Telefone> getTelefones() {
 		return telefones;
@@ -89,6 +82,13 @@ public class Cliente {
 
 	public void setConsumidos(List<Consumido> consumidos) {
 		this.consumidos = consumidos;
+	}
+	
+	public int getIdade() {
+	    LocalDate dataAtual = LocalDate.now();
+	    LocalDate nascimento = LocalDate.parse(this.data_nascimento.replaceAll("-", "/"), DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+	    Period periodo = Period.between(nascimento, dataAtual);
+	    return periodo.getYears();
 	}
 
 }

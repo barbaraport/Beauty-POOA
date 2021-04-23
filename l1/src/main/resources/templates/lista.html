@@ -37,6 +37,8 @@
 						</ul></li>
 					<li class="nav-item"><a class="nav-link"
 						th:href="@{/produtos-e-servicos}">Produtos e Serviços</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/relatorios}">Relatórios</a></li>
 				</ul>
 			</div>
 		</div>
@@ -123,39 +125,59 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"
 		type="text/javascript"></script>
 	<script>
-		$(document).ready(function() {
-			$(".click-produto").click(function() {
-				var _id = $(this).attr("field");
-				$.get("/modalId/" + _id, function(data, status) {
+		$(document)
+				.ready(
+						function() {
+							$(".click-produto")
+									.click(
+											function() {
+												var _id = $(this).attr("field");
+												$
+														.get(
+																"/modalId/"
+																		+ _id,
+																function(data,
+																		status) {
 
-				}).done(function(dados) {
-					
-					// criando o html dinamicamente pelo js
-					var textoModal = document.getElementById("modal-body"); // pego o modal body, que é onde fica o texto
-					textoModal.innerHTML = ""; // para limpar o possível conteúdo do modal que era de outra pessoa
-					
-					if (!dados.length == 0) { // verificando se a pessoa tem algum produto consumido
-						
-						var consumido = dados.map(function(item,indice){ // percorrendo os produtos consumidos
-							
-							let span = document.createElement("span"); // crio uma tag span
-							span.textContent = item.produto; // o texto dela será o nome do produto
-							let br = document.createElement("br"); // crio um elemento br
-							
-							textoModal.appendChild(span); // dentro do corpo do modal adiciono um span
-							textoModal.appendChild(br); // logo em seguida adiciono um br para quebrar a linha
-							
+																})
+														.done(
+																function(dados) {
+
+																	// criando o html dinamicamente pelo js
+																	var textoModal = document
+																			.getElementById("modal-body"); // pego o modal body, que é onde fica o texto
+																	textoModal.innerHTML = ""; // para limpar o possível conteúdo do modal que era de outra pessoa
+
+																	if (!dados.length == 0) { // verificando se a pessoa tem algum produto consumido
+
+																		var consumido = dados
+																				.map(function(
+																						item,
+																						indice) { // percorrendo os produtos consumidos
+
+																					let span = document
+																							.createElement("span"); // crio uma tag span
+																					span.textContent = item.produto; // o texto dela será o nome do produto
+																					let br = document
+																							.createElement("br"); // crio um elemento br
+
+																					textoModal
+																							.appendChild(span); // dentro do corpo do modal adiciono um span
+																					textoModal
+																							.appendChild(br); // logo em seguida adiciono um br para quebrar a linha
+
+																				})
+																	} else { // caso a pessoa não tenha consumido nada
+																		let span = document
+																				.createElement("span");
+																		span.textContent = "O cliente ainda não consumiu nenhum produto ou serviço.";
+																		textoModal
+																				.appendChild(span);
+																	}
+
+																})
+											})
 						})
-					}
-					else { // caso a pessoa não tenha consumido nada
-						let span = document.createElement("span");
-						span.textContent = "O cliente ainda não consumiu nenhum produto ou serviço.";
-						textoModal.appendChild(span);
-					}
-					
-				})
-			})
-		})
 	</script>
 
 </body>

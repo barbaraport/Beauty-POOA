@@ -14,6 +14,17 @@ public class Consumido {
 	private long id;
 	@Column
 	private String produto;
+	
+//	@ManyToOne
+//	private Cliente cliente;
+
+//	public Cliente getId_Cliente() {
+//		return cliente;
+//	}
+//
+//	public void setId_Cliente(Cliente cliente) {
+//		this.cliente = cliente;
+//	}
 
 	public long getId() {
 		return id;
