@@ -19,6 +19,7 @@
 Confira abaixo o nosso projeto em funcionamento!
 
 ![gif do sistema](Video/Beauty_POAA.gif)
+<p align="justify">Para realizar o download do projeto, clique <a href="https://github.com/barbaraport/Beauty-POOA/releases/tag/v-beauty-pooa-l1.0.0.1">aqui</a>.</p>
 
 ## :girl::boy: Integrantes da equipe
 <p align="justify">Conheça um pouco mais sobre nossa formação e experiências visitando nossos perfis do LinkedIn. Sua visita é muito bem-vinda!</p>
