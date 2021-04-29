@@ -1,4 +1,12 @@
 # Beauty-POOA :coffee::computer:	
+![html](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
+![java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
+![spring](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
+![mysql](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)
+
+![love](https://ForTheBadge.com/images/badges/built-with-love.svg)
+
 1º Projeto de Programação Orientada a Objetos, que é uma disciplina ministrada pelo Prof. Gerson Penha.
 
 ## :computer: Funcionalidades do nosso projeto
